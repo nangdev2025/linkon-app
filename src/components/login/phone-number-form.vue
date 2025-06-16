@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import { ref, defineEmits } from 'vue';
+
+const emit = defineEmits(['go-next']);
+
+const phone = ref('');
+const countryCodes = ['+84', '+1', '+61', '+44'];
+const selectedCode = ref('+84');
+
+const onCountryChange = (e: any) => {
+  selectedCode.value = countryCodes[e.detail.value];
+}
+
+const onSubmit = () => {
+  const fullNumber = `${selectedCode.value} ${phone.value}`;
+  console.log('Submitted phone number:', fullNumber);
+  emit('go-next');
+}
+</script>
+
 <template>
   <view class="phone-number-wrapper">
     <view class="welcome-text">
@@ -20,6 +40,8 @@
           required
           :border="false"
           class="phone-input"
+          autofocus
+          :rules="[{ required: true, message: 'Please enter your phone number' }]"
         />
       </view>
 
@@ -35,35 +57,9 @@
   </view>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-
-defineEmits(['goNext']);
-
-const phone = ref('');
-const countryCodes = ['+84', '+1', '+61', '+44'];
-const selectedCode = ref('+84');
-
-const onCountryChange = (e) => {
-  selectedCode.value = countryCodes[e.detail.value];
-}
-
-const onSubmit = () => {
-  const fullNumber = `${selectedCode.value} ${phone.value}`;
-  console.log('Submitted phone number:', fullNumber);
-
-  uni.showToast({
-    title: 'Submitted!',
-    icon: 'success'
-  })
-
-  uni.$emit('goNext');
-}
-</script>
-
 <style scoped>
 .welcome-text {
-  margin-bottom: 24px;
+  margin-bottom: 48rpx;
 }
 
 .title {
@@ -80,20 +76,16 @@ const onSubmit = () => {
 }
 
 .phone-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
+  display: block;
 }
 
 .phone-input-wrapper {
-  width: 100%;
   display: flex;
   align-items: center;
   background: white;
   border-radius: 24px;
   padding: 8px 16px;
-  margin-bottom: 32rpx;
+  margin-bottom: 64rpx;
 }
 
 .prefix {

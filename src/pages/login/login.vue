@@ -18,52 +18,63 @@
 				url:'/pages/register/register'
 			})
 		},
-		login:()=>{
+		login:(code: string)=>{
+			uni.showToast({
+				title: 'Verifying...',
+				icon: 'success'
+			})
+			uni.setStorageSync('token', code)
 			uni.switchTab({
 				url:'/pages/index/index'
 			})
 		},
-		goNext:()=>{
+		goOtpVerification:()=>{
+			uni.showToast({
+				title: 'Submitted!',
+				icon: 'success'
+			})
 			currentStep.value = 'otp'
 		}
 	})
 </script>
 
 <template>
-	<view class="app-bg-radient min-width-100dvw min-height-100dvh login__wrapper">
-		<view class="login__company">
-			<image src="@/static/logo.png" :alt="appConfig.description" mode="" class="img_icon" />
-			<view class="projectName">
-				{{ appConfig.companyName }}
+	<view class="app-bg-radient login__wrapper">
+		<view class="login__container">
+			<view class="login__company">
+				<image src="@/static/logo.png" :alt="appConfig.description" mode="" class="login__company-icon" />
+				<view class="login__company-name">
+					{{ appConfig.companyName }}
+				</view>
+			</view>
+			<view class="login__content">
+				<phone-number-form v-if="currentStep === 'phone'" @go-next="stateData.goOtpVerification" />
+				<otp-verification-form v-else @login-submit="stateData.login"/>
 			</view>
 		</view>
-		<view class="login__content">
-			<phone-number-form v-if="currentStep === 'phone'" @goNext="stateData.goNext" />
-			<otp-verification-form v-else />
-		</view>
-		<view>
-			<picture>
-				<source media="(min-width: 600px)" srcset="@/static/images/truck-login@2x.png" type="image/png" />
-				<source srcset="@/static/images/truck-login.png" type="image/png" />
-				<img class="login__media" src="@/static/images/truck-login.png" alt="vehicle-login" />
-			</picture>
-		</view>
+		<view class="login__welcome" />
 	</view>
 </template>
 
 <style scoped lang="scss">
 	.login__wrapper {
+		display: grid;
+		grid-template-rows: auto 1fr;
+		// width: 100vw;
+		height: 100vh;
+		padding: 0 20rpx;
+
 		.login__company {
 			width: 100%;
 			padding-top: 80rpx;
 			text-align: center;
 
-			.img_icon {
+			.login__company-icon {
 				width: 68px;
 				height: 68px;
 			}
 
-			.projectName {
+			.login__company-name {
 				width: 100%;
 				text-align: center;
 				font-size: 24px;
@@ -74,19 +85,31 @@
 		}
 
 		.login__content {
-			width: 100vw;
-			padding-top: 78rpx;
+			width: 100%;
 			margin: 0 auto;
 			display: flex;
 			justify-content: center;
+			margin-top: 80rpx;
 		}
 
 		.login__media {
 			margin-top: 25rpx;
 			object-fit: fill;
 			width: 100%;
-			// height: 100%;
 		}
+	}
+
+	.login__container {
+		width: 100%;
+		height: 100%;
+	}
+
+	.login__welcome {
+		flex: 1;
+		margin-top: 25rpx;
+		width: 100%;
+		background-image: url('@/static/images/truck-login.png');
+		background-size: cover;
 	}
 
 	:deep(.van-cell) {

@@ -1,24 +1,59 @@
+<script setup lang="ts">
+import { ref, defineEmits, onMounted } from 'vue';
+
+const otp = ref(['', '', '', '', '', '']);
+
+const emit = defineEmits(['login-submit']);
+
+const handleInput = (index: number) => {
+  if (otp.value[index].length === 1 && index < 5) {
+    const nextInput = document.querySelectorAll('.otp-input')[index + 1] as HTMLInputElement;
+    nextInput?.focus();
+  }
+}
+
+const onLogin = () => {
+  const code = otp.value.join('')
+  if (code.length === 6) {
+    emit('login-submit', code);
+  } else {
+    uni.showToast({
+      title: 'Enter 6-digit OTP',
+      icon: 'none'
+    })
+  }
+}
+
+onMounted(() => {
+  const firstInput = document.querySelectorAll('.otp-input')[0] as HTMLInputElement;
+  firstInput?.focus();
+});
+</script>
+
 <template>
-  <view class="otp-form">
-    <view class="title">OTP Verification</view>
-    <view class="subtitle">
-      We have sent the OTP code to your phone number
-      <text class="phone">+84 866 789 937</text>
-    </view>
+  <view class="otp-form-wrapper">
+    <view class="otp-form">
+      <view class="title">OTP Verification</view>
+      <view class="subtitle">
+        We have sent the OTP code to your phone number
+        <text class="phone">+84 866 789 937</text>
+      </view>
 
-    <view class="otp-boxes">
-      <input
-        v-for="(digit, index) in otp"
-        :key="index"
-        v-model="otp[index]"
-        maxlength="1"
-        type="number"
-        class="otp-input"
-        @input="handleInput(index)"
-      />
-    </view>
+      <view class="otp-boxes">
+        <input
+          v-for="(digit, index) in otp"
+          :key="index"
+          v-model="otp[index]"
+          maxlength="1"
+          type="number"
+          class="otp-input"
+          @input="handleInput(index)"
+          autofocus
+        />
+      </view>
 
-    <view class="resend-text">Don’t receive code?</view>
+      <view class="resend-text">Don’t receive code?</view>
+    </view>
 
     <van-button
       block
@@ -30,35 +65,6 @@
     </van-button>
   </view>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-
-const otp = ref(['', '', '', '', '', ''])
-
-const handleInput = (index) => {
-  if (otp.value[index].length === 1 && index < 5) {
-    const nextInput = document.querySelectorAll('.otp-input')[index + 1]
-    nextInput?.focus()
-  }
-}
-
-const onLogin = () => {
-  const code = otp.value.join('')
-  if (code.length === 6) {
-    console.log('Submitted OTP:', code)
-    uni.showToast({
-      title: 'Verifying...',
-      icon: 'success'
-    })
-  } else {
-    uni.showToast({
-      title: 'Enter 6-digit OTP',
-      icon: 'none'
-    })
-  }
-}
-</script>
 
 <style scoped>
 .otp-container {
@@ -77,11 +83,16 @@ const onLogin = () => {
   margin-bottom: 12px;
 }
 
+.otp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .subtitle {
   text-align: center;
   font-size: 14px;
   color: #333;
-  margin-bottom: 24px;
 }
 
 .phone {
@@ -92,7 +103,8 @@ const onLogin = () => {
 .otp-boxes {
   display: flex;
   justify-content: space-between;
-  margin: 0 auto 24px;
+  gap: 4px;
+  margin: 0 auto;
   max-width: 280px;
 }
 
@@ -108,7 +120,7 @@ const onLogin = () => {
 }
 
 .resend-text {
-  text-align: center;
+  text-align: end;
   font-size: 14px;
   color: #555;
   margin-bottom: 24px;
