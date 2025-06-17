@@ -86,8 +86,6 @@ $uni-headings: map-deep-merge(
   $uni-headings
 );
 
-
-
 // 主色
 $uni-primary: #0098F6 !default;
 $uni-primary-disable:lighten($uni-primary,20%) !default;
@@ -145,6 +143,3 @@ $uni-shadow-lg:0px 1px 10px 2px rgba($color: #a5a4a4, $alpha: 0.5) !default;
 // 蒙版
 $uni-mask: rgba($color: #000000, $alpha: 0.4) !default;
 
-// Logistics vehicle apps
-// Colors
-$uni-app-base-white: #FEFEFE;

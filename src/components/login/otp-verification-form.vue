@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineEmits, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const otp = ref(['', '', '', '', '', '']);
 

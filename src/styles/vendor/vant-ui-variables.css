@@ -1,0 +1,93 @@
+@import '../variables.css';
+
+:root:root {
+    /* Color Palette */
+    --van-black: #000;
+    --van-white: #fff;
+    --van-gray-1: #f7f8fa;
+    --van-gray-2: #f2f3f5;
+    --van-gray-3: #ebedf0;
+    --van-gray-4: #dcdee0;
+    --van-gray-5: #c8c9cc;
+    --van-gray-6: #969799;
+    --van-gray-7: #646566;
+    --van-gray-8: #323233;
+    --van-red: #ee0a24;
+    --van-blue: #1989fa;
+    --van-orange: #ff976a;
+    --van-orange-dark: #ed6a0c;
+    --van-orange-light: #fffbe8;
+    --van-green: #07c160;
+
+    /* Gradient Colors */
+    --van-gradient-red: linear-gradient(to right, #ff6034, #ee0a24);
+    --van-gradient-orange: linear-gradient(to right, #ffd01e, #ff8917);
+
+    /* Component Colors */
+    --van-primary-color: var(--app-primary-500);
+    --van-success-color: var(--app-success-500);
+    --van-danger-color: var(--app-error-500);
+    --van-warning-color: var(--app-warning-500);
+    --van-text-color: var(--app-gray-800);
+    --van-text-color-2: var(--van-gray-6);
+    --van-text-color-3: var(--van-gray-5);
+    --van-active-color: var(--van-gray-2);
+    --van-active-opacity: 0.6;
+    --van-disabled-opacity: 0.5;
+    --van-background: var(--app-base-white);
+    --van-background-2: var(--van-white);
+
+    /* Padding */
+    --van-padding-base: 4px;
+    --van-padding-xs: 8px;
+    --van-padding-sm: 12px;
+    --van-padding-md: 16px;
+    --van-padding-lg: 24px;
+    --van-padding-xl: 32px;
+
+    /* Font */
+    --van-font-size-xs: 10px;
+    --van-font-size-sm: 12px;
+    --van-font-size-md: 14px;
+    --van-font-size-lg: 16px;
+    --van-font-bold: 600;
+    --van-line-height-xs: 14px;
+    --van-line-height-sm: 18px;
+    --van-line-height-md: 20px;
+    --van-line-height-lg: 22px;
+    --van-base-font: 'Urbanist', sans-serif;
+    --van-price-font: 'Urbanist', sans-serif;
+    --van-cell-value-font-size: 16px;
+
+    /* Animation */
+    --van-duration-base: 0.3s;
+    --van-duration-fast: 0.2s;
+    --van-ease-out: ease-out;
+    --van-ease-in: ease-in;
+
+    /* Border */
+    --van-border-color: var(--van-gray-3);
+    --van-border-width: 1px;
+    --van-radius-sm: 2px;
+    --van-radius-md: 4px;
+    --van-radius-lg: 8px;
+    --van-radius-max: 999px;
+}
+
+/* Fonts settings
+// page,
+// view,
+// text,
+// button,
+// input {
+//   font-family: 'Urbanist', sans-serif;
+// }
+
+// .van-button,
+// .van-cell,
+// .van-dialog,
+// .van-toast,
+// .van-field,
+// .van-popup {
+//   font-family: 'Urbanist', sans-serif !important;
+// } */

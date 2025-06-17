@@ -1,0 +1,83 @@
+:root {
+    /* Logistics vehicle apps - Colors */
+    /* Base */
+    --app-base-white: #FEFEFE;
+    --app-base-black: #1B1919;
+    /* Gray */
+    --app-gray-50: #F9FAFB;
+    --app-gray-100: #F2F4F7;
+    --app-gray-200: #EAECF0;
+    --app-gray-300: #D0D5DD;
+    --app-gray-400: #98A2B3;
+    --app-gray-500: #667085;
+    --app-gray-600: #475467;
+    --app-gray-700: #344054;
+    --app-gray-800: #1D2939;
+    --app-gray-900: #101828;
+    /* Primary */
+    --app-primary-50: #EAF8ED;
+    --app-primary-100: #D5F1DB;
+    --app-primary-200: #C0EACA;
+    --app-primary-300: #ABE4B9;
+    --app-primary-400: #6DD085;
+    --app-primary-500: #2FBC51;
+    --app-primary-600: #269640;
+    --app-primary-700: #175E28;
+    --app-primary-800: #0F3817;
+    --app-primary-900: #023E2E;
+    /* Secondary */
+    --app-secondary-50: #F6F5F1;
+    --app-secondary-100: #F8E1D5;
+    --app-secondary-200: #F9D7C7;
+    --app-secondary-300: #F3CDB9;
+    --app-secondary-400: #F2B99D;
+    --app-secondary-500: #F28A51;
+    --app-secondary-600: #D86838;
+    --app-secondary-700: #B65D51;
+    --app-secondary-800: #8C3D46;
+    --app-secondary-900: #032E2E;
+    /* Error */
+    --app-error-50: #FEE3F2;
+    --app-error-100: #FEE4E2;
+    --app-error-200: #FECDCA;
+    --app-error-300: #FDA29B;
+    --app-error-400: #F97066;
+    --app-error-500: #F04438;
+    --app-error-600: #D92D20;
+    --app-error-700: #B42318;
+    --app-error-800: #912018;
+    --app-error-900: #7A271A;
+    /* Warning */
+    --app-warning-50: #FFFAEB;
+    --app-warning-100: #FEF0C7;
+    --app-warning-200: #FEDF89;
+    --app-warning-300: #FEC84B;
+    --app-warning-400: #FDB022;
+    --app-warning-500: #F79009;
+    --app-warning-600: #DC6803;
+    --app-warning-700: #B54708;
+    --app-warning-800: #93370D;
+    --app-warning-900: #7A2E0E;
+    /* Success */
+    --app-success-50: #ECFDF3;
+    --app-success-100: #D1FADF;
+    --app-success-200: #A6F4C5;
+    --app-success-300: #6CE9A6;
+    --app-success-400: #32D583;
+    --app-success-500: #12B76A;
+    --app-success-600: #039855;
+    --app-success-700: #027A48;
+    --app-success-800: #05603A;
+    --app-success-900: #054F31;
+    /* In-progress */
+    --app-inprogress-50: #EFF8FF;
+    --app-inprogress-100: #D0E2F8;
+    --app-inprogress-200: #A0C5F2;
+    --app-inprogress-300: #87B7EF;
+    --app-inprogress-400: #579AE8;
+    --app-inprogress-500: #126FDF;
+    --app-inprogress-600: #1063C8;
+    --app-inprogress-700: #0B4D9C;
+    --app-inprogress-800: #084285;
+    --app-inprogress-900: #072C59;
+}

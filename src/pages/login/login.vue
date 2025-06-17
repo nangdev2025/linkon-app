@@ -1,8 +1,7 @@
 <script setup lang="ts">
 	import { reactive, ref } from 'vue';
 	import appConfig from '@/config/app-config.json';
-	import PhoneNumberForm from '@/components/login/phone-number-form.vue';
-	import OtpVerificationForm from '@/components/login/otp-verification-form.vue';
+	import LoginForm from '@/components/login/login-form.vue';
 
 	// form steps: ['phone', 'otp']
 	const currentStep = ref('phone');
@@ -39,20 +38,18 @@
 </script>
 
 <template>
-	<view class="app-bg-radient login__wrapper">
+	<view class="login__wrapper">
+		<view class="app-bg-radient login__bg"/>
 		<view class="login__container">
 			<view class="login__company">
 				<image src="@/static/logo.png" :alt="appConfig.description" mode="" class="login__company-icon" />
-				<view class="login__company-name">
-					{{ appConfig.companyName }}
-				</view>
+				<view class="login__company-name">LINKON</view>
 			</view>
 			<view class="login__content">
-				<phone-number-form v-if="currentStep === 'phone'" @go-next="stateData.goOtpVerification" />
-				<otp-verification-form v-else @login-submit="stateData.login"/>
+				<LoginForm />
 			</view>
 		</view>
-		<view class="login__welcome" />
+		<view class="login__welcome"/>
 	</view>
 </template>
 
@@ -60,69 +57,80 @@
 	.login__wrapper {
 		display: grid;
 		grid-template-rows: auto 1fr;
-		// width: 100vw;
 		height: 100vh;
-		padding: 0 20rpx;
+		position: relative;
+	}
 
-		.login__company {
+	.login__bg {
+		height: 320px;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		z-index: 0;
+	}
+
+	.login__company {
+		width: 100%;
+		margin-top: 30px;
+		text-align: center;
+
+		.login__company-icon {
+			width: 68px;
+			height: 68px;
+		}
+
+		.login__company-name {
 			width: 100%;
-			padding-top: 80rpx;
 			text-align: center;
-
-			.login__company-icon {
-				width: 68px;
-				height: 68px;
-			}
-
-			.login__company-name {
-				width: 100%;
-				text-align: center;
-				font-size: 24px;
-				font-weight: 900;
-				color: white;
-				font-style: italic;
-			}
-		}
-
-		.login__content {
-			width: 100%;
-			margin: 0 auto;
-			display: flex;
-			justify-content: center;
-			margin-top: 80rpx;
-		}
-
-		.login__media {
-			margin-top: 25rpx;
-			object-fit: fill;
-			width: 100%;
+			font-size: 40px;
+			font-weight: 900;
+			color: var(--app-base-white);
+			font-style: italic;
 		}
 	}
 
-	.login__container {
+	.login__content {
 		width: 100%;
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+		margin-top: 56px;
+	}
+
+	.login__media {
+		margin-top: 25px;
+		object-fit: fill;
+		width: 100%;
+	}
+
+	.login__container {
 		height: 100%;
+		position: relative;
+		padding: 0 22px;
+		z-index: 1;
 	}
 
 	.login__welcome {
 		flex: 1;
-		margin-top: 25rpx;
 		width: 100%;
+		height: 320px;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		z-index: 0;
 		background-image: url('@/static/images/truck-login.png');
+		background-repeat: no-repeat;
 		background-size: cover;
+		background-position: center;
 	}
 
 	:deep(.van-cell) {
-		border-radius: 20rpx;
+		border-radius: 20px;
 		border: 1px solid rgba(128, 128, 128, 0.5);
 	}
 
 	:deep(.van-field__label) {
 		width: 10%;
-	}
-
-	:deep(.van-checkbox__icon) {
-		margin-top: -25rpx;
 	}
 
 	:deep(.van-button--primary) {

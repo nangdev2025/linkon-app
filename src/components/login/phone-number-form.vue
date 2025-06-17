@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue';
+import { ref } from 'vue';
 
 const emit = defineEmits(['go-next']);
 
@@ -40,7 +40,7 @@ const onSubmit = () => {
           required
           :border="false"
           class="phone-input"
-          autofocus
+          :autofocus="true"
           :rules="[{ required: true, message: 'Please enter your phone number' }]"
         />
       </view>
